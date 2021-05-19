@@ -1,4 +1,4 @@
-### Deep learning project seed
+### Deep Learning Project Seed
 Use this seed to start new deep learning / ML projects.
 
 - Built in setup.py
@@ -37,53 +37,19 @@ Conference
 ## Description   
 What it does   
 
-## How to run   
-First, install dependencies   
-```bash
-# clone project   
-git clone https://github.com/YourGithubName/deep-learning-project-template
+The repository is organized as follows:
+1. the folder [data preparation](./data_preparation) contains all the notebooks and scripts related to the data preparation
+2. the folder [trainings](./trainings) contains all the notebooks and scripts related to the trainings
+3. the folder [predictions](./predictions) contains all the notebooks and scripts related to predictions on checkpoints
+4. the folder [reports](./reports) contains all the notebooks and scripts related to evaluation reports
+5. the folder [models_export](./models_export) contains all the notebooks and scripts related export checkpoints
+6. the folder [tests](./tests) contains the tests
 
-# install project   
-cd deep-learning-project-template 
-pip install -e .   
-pip install -r requirements.txt
- ```   
- Next, navigate to any file and run it.   
- ```bash
-# module folder
-cd project
-
-# run module (example: mnist as your main contribution)   
-python lit_classifier_main.py    
+Right now we suggest to version each training explicitly such as:
+```
+v1_train.py
+v2_train.py 
 ```
 
-## Imports
-This project is setup as a package which means you can now easily import any file into any other file like so:
-```python
-from project.datasets.mnist import mnist
-from project.lit_classifier_main import LitClassifier
-from pytorch_lightning import Trainer
-
-# model
-model = LitClassifier()
-
-# data
-train, val, test = mnist()
-
-# train
-trainer = Trainer()
-trainer.fit(model, train, val)
-
-# test using the best model!
-trainer.test(test_dataloaders=test)
-```
-
-### Citation   
-```
-@article{YourName,
-  title={Your Title},
-  author={Your team},
-  journal={Location},
-  year={Year}
-}
-```   
+In order to replicate each training without problems.
+The datasets used are versioned using dvc.
