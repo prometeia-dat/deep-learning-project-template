@@ -1,0 +1,36 @@
+$schema:  https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+display_name: test_lit_classifier
+experiment_name: lit_classifier
+description: |
+  Some description
+
+environment: azureml:training-utils@latest
+distribution:
+  type: mpi
+compute: azureml:low-k80x4
+resources:
+  instance_count: 1
+inputs:
+  damage_dataset:
+    type: uri_folder
+    path: azureml://datastores/datasets/paths/test
+    mode: download
+    
+code: ../src
+command: >-
+  python lit_image_classifier.py
+  --batch_size 64
+  --hidden_dim 128
+  --accelerator auto
+  --devices auto
+  --auto_select_gpus true
+  --accumulate_grad_batches 2
+  --benchmark true
+  --default_root_dir ./logs
+  --max_epochs 10
+  --num_nodes 1
+  --sync_batchnorm false
+  --deterministic false
+  --num_sanity_val_steps 0
+  --precision 16
+  --strategy ddp_spawn

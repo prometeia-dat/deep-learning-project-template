@@ -5,7 +5,6 @@ Use this seed to start new deep learning / ML projects.
 - Built in requirements
 - Examples with MNIST
 - Badges
-- Bibtex
 
 #### Goals  
 The goal of this seed is to structure ML paper-code the same so that work can easily be extended and replicated.   
@@ -18,20 +17,9 @@ The goal of this seed is to structure ML paper-code the same so that work can ea
  
 # Your Project Name     
 
-[![Paper](http://img.shields.io/badge/paper-arxiv.1001.2234-B31B1B.svg)](https://www.nature.com/articles/nature14539)
-[![Conference](http://img.shields.io/badge/NeurIPS-2019-4b44ce.svg)](https://papers.nips.cc/book/advances-in-neural-information-processing-systems-31-2018)
-[![Conference](http://img.shields.io/badge/ICLR-2019-4b44ce.svg)](https://papers.nips.cc/book/advances-in-neural-information-processing-systems-31-2018)
-[![Conference](http://img.shields.io/badge/AnyConference-year-4b44ce.svg)](https://papers.nips.cc/book/advances-in-neural-information-processing-systems-31-2018)  
-<!--
-ARXIV   
-[![Paper](http://img.shields.io/badge/arxiv-math.co:1480.1111-B31B1B.svg)](https://www.nature.com/articles/nature14539)
--->
+
 ![CI testing](https://github.com/PyTorchLightning/deep-learning-project-template/workflows/CI%20testing/badge.svg?branch=master&event=push)
-
-
-<!--  
-Conference   
--->   
+ 
 </div>
  
 ## Description   
@@ -39,17 +27,16 @@ What it does
 
 The repository is organized as follows:
 1. the folder [data preparation](./data_preparation) contains all the notebooks and scripts related to the data preparation
-2. the folder [trainings](./trainings) contains all the notebooks and scripts related to the trainings
+2. the folder [trainings](./trainings) contains all the scripts related to the trainings
 3. the folder [predictions](./predictions) contains all the notebooks and scripts related to predictions on checkpoints
 4. the folder [reports](./reports) contains all the notebooks and scripts related to evaluation reports
 5. the folder [models_export](./models_export) contains all the notebooks and scripts related export checkpoints
 6. the folder [tests](./tests) contains the tests
 
-Right now we suggest to version each training explicitly such as:
-```
-v1_train.py
-v2_train.py 
-```
+## Guidelines
 
-In order to replicate each training without problems.
-The datasets used are versioned using dvc.
+1. for each version of the training create a new folder named v1, v2, vi
+2. place the files needed in the src folder
+3. put all the scripts in the bash and azure folders
+4. create a notebook to test the model and select the best checkpoint, and specifiy were the best checkpoint is saved on azure
+5. remember to export the model into torchscript and onnx (we will ad examples to export in float16 and int8)
